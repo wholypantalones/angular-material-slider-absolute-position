@@ -1,0 +1,31 @@
+<h2>Position Slider</h2>
+<p>Drag the sliders to position absolute div</p>
+
+{{top < 0 ? top : ''}} <mat-slider max="200" min="0" thumbLabel tickInterval="10" [(ngModel)]="top"></mat-slider> {{top ? top : '0'}}
+
+<div style="text-align:center;width:300px">
+  {{!top || top === 0 ? 'top' : (top > 0 && top < 175) ? 'center' : 'bottom'}}
+</div>
+
+{{left < 0 ? left : ''}} <mat-slider max="200" min="0" thumbLabel tickInterval="10" [(ngModel)]="left"></mat-slider> {{left ? left : '0'}}
+
+<div style="text-align:center;width:300px">
+  {{!left || left === 0 ? 'left' : (left > 0 && left < 175) ? 'center' : 'right'}}
+</div>
+
+<button style="margin-top:20px;margin-right: 10px" mat-flat-button color="primary" (click)="topleft()">top left</button>
+<button style="margin-right:10px" mat-flat-button color="primary" (click)="center()">center</button>
+<button mat-flat-button color="primary" (click)="bottomright()">bottom right</button>
+
+<div style="position:relative;outline:1px solid #222;height:400px;width: 400px;margin-top:40px">
+  <div style="position:absolute;outline:1px solid red;height:200px;width:50%" [ngStyle]="{'top': top + 'px', 'left': left + 'px'}">
+    <div style="width:200px;margin: auto;text-align:center">
+      <p>Positioned div</p>
+      <p>top: {{top ? top : '0'}}px</p>
+      <p>left: {{left ? left : '0'}}px</p>
+    </div>
+  </div>
+</div>
+			<!-- Copyright 2018 Google Inc. All Rights Reserved.
+    Use of this source code is governed by an MIT-style license that
+    can be found in the LICENSE file at http://angular.io/license -->
